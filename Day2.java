@@ -8,37 +8,44 @@ public class Main {
 
         for (char[] val : arr) {
             if (val[1] == 'X') {
-                score++;
-                if (val[0] == 'C') {
-                    score += 6;
-                }
-                else if (val[0] == 'A') {
+                if (val[0] == 'A') {
                     score += 3;
+                }
+                else if (val[0] == 'B') {
+                    score += 1;
+                }
+                else {
+                    score += 2;
                 }
             }
             else if (val[1] == 'Y') {
-                score += 2;
+                score += 3;
                 if (val[0] == 'A') {
-                    score += 6;
+                    score += 1;
                 }
                 else if (val[0] == 'B') {
+                    score += 2;
+                }
+                else {
                     score += 3;
                 }
             }
             else if (val[1] == 'Z') {
-                score += 3;
-                if (val[0] == 'B') {
-                    score += 6;
+                score += 6;
+                if (val[0] == 'A') {
+                    score += 2;
                 }
-                else if (val[0] == 'C') {
+                else if (val[0] == 'B') {
                     score += 3;
+                }
+                else {
+                    score += 1;
                 }
             }
         }
 
         return score;
     }
-
 
     public static char[][] popArr() {
         return new char[][] {
