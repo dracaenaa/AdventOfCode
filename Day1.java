@@ -1,20 +1,30 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println(findHighest(popArr()));
+        int [] highestThree = findHighest(popArr());
+        System.out.println(highestThree[0] + highestThree[1] + highestThree[2]);
     }
 
 
 
-public static int findHighest(int[][] nums) {
-    int highest = 0;
+public static int[] findHighest(int[][] nums) {
+    int[] highest = new int[] {0,0,0};
     int currentTotal = 0;
 
     for (int i = 0; i < nums.length; i++) {
         for (int j = 0; j < nums[i].length; j++) {
             currentTotal += nums[i][j];
         }
-        if (currentTotal > highest) {
-            highest = currentTotal;
+        if (currentTotal > highest[0]) {
+            highest[2] = highest[1];
+            highest[1] = highest[0];
+            highest[0] = currentTotal;
+        }
+        else if (currentTotal > highest[1]) {
+            highest[2] = highest[1];
+            highest[1] = currentTotal;
+        }
+        else if (currentTotal > highest[2]) {
+            highest[2] = currentTotal;
         }
         currentTotal = 0;
 
