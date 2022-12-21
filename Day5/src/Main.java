@@ -30,8 +30,8 @@ public class Main {
         for(Integer[] instruction : instructions) {
             ArrayList<String> fromCrateList = cratesAll.get(instruction[1]-1);
             ArrayList<String> toCrateList = cratesAll.get(instruction[2]-1);
-            for(int i = 0; i < instruction[0]; i++) {
-                toCrateList.add(fromCrateList.remove(fromCrateList.size()-1));
+            for(int i = instruction[0]; i > 0; i--) {
+                toCrateList.add(fromCrateList.remove(fromCrateList.size()-i));
             }
         }
 
