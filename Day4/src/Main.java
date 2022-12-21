@@ -30,7 +30,10 @@ public class Main {
         int area2Start = Integer.parseInt(pair[1][0]);
         int area2End = Integer.parseInt(pair[1][1]);
 
-        return ((area1Start <= area2Start && area1End >= area2End) || (area2Start <= area1Start && area2End >= area1End));
+        return ((area1Start >= area2Start && area1Start <= area2End) ||
+                (area1End >= area2Start && area1End <= area2End) ||
+                (area2Start >= area1Start && area2Start <= area1End) ||
+                (area2End >= area1Start && area2End <= area1End));
     }
 
     public static ArrayList<String[][]> handleFileReading() {
