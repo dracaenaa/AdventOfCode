@@ -71,9 +71,12 @@ public class Main {
     }
 
     public static Directory handleCalculateSubDirSize(Directory currentDir) {
-        Map<String, Directory> subDirs = currentDir.getSubdirectories();
-        for (Directory subDir : subDirs.values()) {
-            currentDir.setSize(handleCalculateSubDirSize(subDir).getSize());
+        if (currentDir.getSubdirectories().size() > 0 && !currentDir.isSizeCalculated()) {
+            Map<String, Directory> subDirs = currentDir.getSubdirectories();
+            for (Directory subDir : subDirs.values()) {
+                currentDir.setSize(handleCalculateSubDirSize(subDir).getSize());
+            }
+            currentDir.setSizeCalculated(true);
         }
 
         return currentDir;
